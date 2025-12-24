@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Timetable</title>
+</head>
+<body>
+  <h2>Study Timetable Generator</h2>
+
+  <form id="studyForm">
+    <label>Subject: <input type="text" id="subject"></label>
+    <label>Priority: <input type="number" id="priority" min="1"></label>
+    <label>Deadline: <input type="date" id="deadline"></label>
+    <button type="button" onclick="addSubject()">Add Subject</button>
+  </form>
+
+  <label>Total Hours: <input type="number" id="totalHours"></label>
+  <button onclick="generateTable()">Generate Timetable</button>
+
+  <table border="1" id="timetable">
+    <thead>
+      <tr><th>Subject</th><th>Days Remaining</th><th>Allocated Hours</th><th>Daily Time</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+let subjects = [];
+
+function addSubject() {
+  let name = document.getElementById("subject").value;
+  let priority = parseInt(document.getElementById("priority").value);
+  let deadline = document.getElementById("deadline").value;
+
+  subjects.push({name, priority, deadline});
+  document.getElementById("studyForm").reset();
+}
+
+function convertToTime(decimalHours) {
+  let hours = Math.floor(decimalHours);
+  let minutes = Math.round((decimalHours - hours) * 60);
+  return `${hours}h ${minutes}m`;
+}
+
+function generateTable() {
+  let totalHours = parseInt(document.getElementById("totalHours").value);
+  let today = new Date();
+
+  subjects.forEach(s => {
+    s.daysRemaining = Math.ceil((new Date(s.deadline) - today) / (1000*60*60*24));
+  });
+
+  let totalPriority = subjects.reduce((sum, s) => sum + s.priority, 0);
+  subjects.forEach(s => {
+    s.allocatedHours = (s.priority / totalPriority) * totalHours;
+    let dailyHoursDecimal = s.allocatedHours / s.daysRemaining;
+    s.dailyTime = convertToTime(dailyHoursDecimal);
+  });
+
+  let tbody = document.querySelector("#timetable tbody");
+  tbody.innerHTML = "";
+  subjects.forEach(s => {
+    let row = `<tr>
+      <td>${s.name}</td>
+      <td>${s.daysRemaining}</td>
+      <td>${s.allocatedHours.toFixed(1)} hrs</td>
+      <td>${s.dailyTime}</td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
