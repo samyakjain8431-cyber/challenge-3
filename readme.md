@@ -1,7 +1,7 @@
 
  Study Time Manager
 
-A simple web app to help students organize their study schedules, balance subjects, and track deadlines effectively.  
+A simple website to help students organize their study schedules, balance subjects, and track deadlines effectively.  
 This project was built as part of *Challenge 3* and deployed using **Firebase Hosting**.
 
 
