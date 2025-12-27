@@ -2,7 +2,11 @@
  Study Time Manager
 
 A simple website to help students organize their study schedules, balance subjects, and track deadlines effectively.  
+<<<<<<< HEAD
 This project was built as part of Challenge 3 and deployed using **Firebase Hosting**.
+=======
+This project was built as part of *Challenge 3* and deployed using **Firebase Hosting**.
+>>>>>>> e1f74725e76e448d592fc41609d87ee97556ce1f
 
 
 #    Project Structure
