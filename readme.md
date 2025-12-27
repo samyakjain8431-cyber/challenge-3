@@ -1,8 +1,8 @@
 
  Study Time Manager
 
-A simple web app to help students organize their study schedules, balance subjects, and track deadlines effectively.  
-This project was built as part of *Challenge 3* and deployed using **Firebase Hosting**.
+A simple website to help students organize their study schedules, balance subjects, and track deadlines effectively.  
+This project was built as part of Challenge 3 and deployed using **Firebase Hosting**.
 
 
 #    Project Structure
@@ -39,7 +39,7 @@ Project documentation
 1. Install Node.js from [nodejs.org](https://nodejs.org/) and verify:
    ```bash
    node -v
-   npm -v
+   npm -v 
 
 
 - Install Firebase CLI:
